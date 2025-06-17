@@ -1,33 +1,33 @@
-name: Tweet Qiita New Articles
+# name: Tweet Qiita New Articles
 
-on:
-  schedule:
-    - cron: '0 * * * *'  # 毎時0分に実行（日本時間なら9時間足す）
-  workflow_dispatch:      # 手動実行も可能にする
+# on:
+#   schedule:
+#     - cron: '0 * * * *'  # 毎時0分に実行（日本時間なら9時間足す）
+#   workflow_dispatch:      # 手動実行も可能にする
 
-jobs:
-  tweet:
-    runs-on: ubuntu-latest
+# jobs:
+#   tweet:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
+#       - name: Set up Python
+#         uses: actions/setup-python@v5
+#         with:
+#           python-version: '3.12'
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+#       - name: Install dependencies
+#         run: |
+#           python -m pip install --upgrade pip
+#           pip install -r requirements.txt
 
-      - name: Run bot script
-        run: python qiita_to_x_bot.py
-        env:
-          BEARER_TOKEN: ${{ secrets.BEARER_TOKEN }}
-          API_KEY: ${{ secrets.API_KEY }}
-          API_SECRET: ${{ secrets.API_SECRET }}
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
+#       - name: Run bot script
+#         run: python qiita_to_x_bot.py
+#         env:
+#           BEARER_TOKEN: ${{ secrets.BEARER_TOKEN }}
+#           API_KEY: ${{ secrets.API_KEY }}
+#           API_SECRET: ${{ secrets.API_SECRET }}
+#           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+#           ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
